@@ -426,12 +426,13 @@ textarea {
 /*Begin custom CSS*/
 .header {
   height: 215px;
+  margin-bottom: 40px;
 }
 
 .left {
   height: 140px;
   width: 70px;
-  background-color: orange;
+  background-color: #FF8200;
   border-radius:35px 0 0 35px;
   font-size: 75px;
   color: yellow;
@@ -462,10 +463,18 @@ textarea {
   margin: 130px 25px 50px 150px;
   font-size: 18px;
   background-color: red;
-  box-shadow: 3px 3px orange;
+  box-shadow: 3px 3px #FF8200;
   border: none;
   color: white;
   font-family: 'Henny Penny', cursive;
+}
+
+.d1 ul{
+  margin:175px 470px 0 725px;
+}
+
+.d2 ul{
+  margin:175px 250px 0 945px;
 }
 
 #dropdownMenu1 {
@@ -487,53 +496,38 @@ span {
 
 
 .row {
-	height: 300px;
+	height: 150px;
+
+  margin: 0;
 }
 
-.snippet {
-	width: 290px;
-	height: 50px;
-	background-color: lightgrey;
+.snippet { 
+	width: 200px;
+  height: 50px;
 	border-radius: 7px;
-	margin: 20px;
-	background: -webkit-linear-gradient(#FFFFA9, #FFDD00); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#FFFFA9, #FFDD00); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#FFFFA9, #FFDD00); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#FFFFA9, #FFDD00); /* Standard syntax */
-  box-shadow: 2px 2px #FFFFA9;
+	margin: 0 auto;
+  background-color: #FEFE00;
+  box-shadow: 2px 2px #FF8200;
   color: #484A49;
   font-size: 15px;
   padding: 2px 8px;
-  text-align: center;
 }
 
 .bucket {
   width: 320px;
-  height: 200px;
+  height: 500px;
   border-radius: 15px 15px 0 0;
-  margin: 6px;
+  background-image: url("bucket.png");
+  background-repeat: no-repeat;
+  font-family: 'Slackey', cursive;
+  font-size: 35px;
+  line-height: 225px;
+  text-indent: 60px;
+  color: black;
 }
 
-.b1 {
-  background: -webkit-linear-gradient(#8FE3E3, #619999); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#8FE3E3, #619999); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#8FE3E3, #619999); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#8FE3E3, #619999); /* Standard syntax */
-}
-
-.b2 {
-  background: -webkit-linear-gradient(#98E339, #679926); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#98E339, #679926); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#98E339, #679926); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#98E339, #679926); /* Standard syntax */
-}
-
-.b3 {
-  background: -webkit-linear-gradient(#FF443F, #D32420); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#FF443F, #D32420); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#FF443F, #D32420); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#FF443F, #D32420); /* Standard syntax */
-}
 .container {
 	width: 1000px;
 }
+
+
