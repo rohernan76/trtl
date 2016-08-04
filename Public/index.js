@@ -23,7 +23,15 @@ snippetArr[5] = new Snippet(6, "more js", "js", "languages", 1);
 // just for test purposes to make sure array and objects work as expected
 // jjf 8/4/16
 $(document).ready(function() {
-	$('#snippetBox1').html("Id:" + snippetArr[0].id + "<br>Question Text: " + snippetArr[0].text + "<br>Answer: "+ snippetArr[0].answer + "<br>Category: " + snippetArr[0].category);
-	$('#snippetBox2').html("Id:" + snippetArr[1].id + "<br>Question Text: " + snippetArr[1].text + "<br>Answer: "+ snippetArr[1].answer + "<br>Category: " + snippetArr[1].category);
-	$('#snippetBox3').html("Id:" + snippetArr[2].id + "<br>Question Text: " + snippetArr[2].text + "<br>Answer: "+ snippetArr[2].answer + "<br>Category: " + snippetArr[2].category);
+	$('#snippetBox1').html(snippetArr[0].text);
+	$('#snippetBox2').html(snippetArr[1].text);
+	$('#snippetBox3').html(snippetArr[2].text);
 });
+
+
+
+
+
+
+
+//	$('#snippetBox3').html("Id:" + snippetArr[2].id + "<br>Question Text: " + snippetArr[2].text + "<br>Answer: "+ snippetArr[2].answer + "<br>Category: " + snippetArr[2].category);

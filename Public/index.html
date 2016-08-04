@@ -12,10 +12,44 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Google font -->
+    <link href='https://fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Henny+Penny' rel='stylesheet' type='text/css'>
+
+
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-<div class="header"></div>
+<div class="header">
+	<div class="left">#</div>
+	<div class="right">The<br><span>Code</span><br>is<br>Right</div>
+
+	<button class="btn btn-default" type="submit">Tutorial</button>
+
+	<div class="dropdown">
+  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    	Categories
+    	<span class="caret"></span>
+  		</button>
+	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+	    <li><a href="#">HTML/CSS/JavaScript</a></li>
+	    <li><a href="#">Pokemon/Prescription Drug/Disease</a></li>
+	    <li><a href="#">Shakespeare/Chaucer/Dickens</a></li>
+	  </ul>
+	</div>
+
+	<div class="dropdown">
+  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    	Level
+    	<span class="caret"></span>
+  		</button>
+	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+	    <li><a href="#">1</a></li>
+	    <li><a href="#">2</a></li>
+	    <li><a href="#">3</a></li>
+	  </ul>
+	</div>
+</div>
 
 <div class="container">
 		<div class="row">
@@ -26,12 +60,13 @@
 
 
 		<div class="row">
-			<div class="col-md-4 bucket b1"></div>
-			<div class="col-md-4 bucket b2"></div>
-			<div class="col-md-4 bucket b3"></div>
+			<div id="html" class="col-md-4 bucket b1"></div>
+			<div id="css" class="col-md-4 bucket b2"></div>
+			<div id="js" class="col-md-4 bucket b3"></div>
 		</div>
 </div>
-</body>
+
+
 
 <script src="index.js"></script>
 </body>
