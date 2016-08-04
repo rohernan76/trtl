@@ -1,8 +1,9 @@
-var questionArr = [];
+var snippetArr = [];
 
 // this is what our object will look like in Mongo. Creating it here for now so we can build the front end first.
 // jjf: 8/4/16
-function Question (text, answer, category, difficulty) {
+function Snippet (id, text, answer, category, difficulty) {
+	this.id = id;
 	this.text = text;
 	this.answer = answer;
 	this.category = category;
@@ -11,16 +12,18 @@ function Question (text, answer, category, difficulty) {
 
 // sample population of the objects so we can build out the front end
 // jjf: 8/4/16
-questionArr[0] = new Question("css text here", "css", "languages", 1);
-questionArr[1] = new Question("html text here", "html", "languages", 1);
-questionArr[2] = new Question("js text here", "js", "languages", 1);
-questionArr[3] = new Question("more css", "css", "languages", 1);
-questionArr[4] = new Question("more html", "html", "languages", 1);
-questionArr[5] = new Question("more js", "js", "languages", 1);
+snippetArr[0] = new Snippet(1, "css text here", "css", "languages", 1);
+snippetArr[1] = new Snippet(2, "html text here", "html", "languages", 1);
+snippetArr[2] = new Snippet(3, "js text here", "js", "languages", 1);
+snippetArr[3] = new Snippet(4, "more css", "css", "languages", 1);
+snippetArr[4] = new Snippet(5, "more html", "html", "languages", 1);
+snippetArr[5] = new Snippet(6, "more js", "js", "languages", 1);
 
 
 // just for test purposes to make sure array and objects work as expected
 // jjf 8/4/16
 $(document).ready(function() {
-	$('#questionBox').html("Question Text: " + questionArr[0].text + "<br>Answer: "+ questionArr[0].answer + "<br>Category: " + questionArr[0].category);
+	$('#snippetBox1').html("Id:" + snippetArr[0].id + "<br>Question Text: " + snippetArr[0].text + "<br>Answer: "+ snippetArr[0].answer + "<br>Category: " + snippetArr[0].category);
+	$('#snippetBox2').html("Id:" + snippetArr[1].id + "<br>Question Text: " + snippetArr[1].text + "<br>Answer: "+ snippetArr[1].answer + "<br>Category: " + snippetArr[1].category);
+	$('#snippetBox3').html("Id:" + snippetArr[2].id + "<br>Question Text: " + snippetArr[2].text + "<br>Answer: "+ snippetArr[2].answer + "<br>Category: " + snippetArr[2].category);
 });
