@@ -107,12 +107,11 @@ span {
 }*/
 
 .snippet {
-  background-repeat: no-repeat;
   background-position: center;
+  background-repeat: no-repeat;
   margin: 0 auto;
-  height: 125px;
-  width: 800px;
-  text-align: center;
+  height: 100px;
+  width: 600px;
 }
 
 .bucket {
