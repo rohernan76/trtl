@@ -105,6 +105,13 @@ span {
   border: 1px dotted red;
 }
 
+.test {
+  background-image: url(images/html-1.png);
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  
+}
+
 .bucket {
   width: 320px;
   height: 500px;
@@ -165,6 +172,10 @@ span {
   font-size: 22px;
   color: red;
   text-shadow: 1px 1px #FEFE00;
+}
+
+.come-down {
+  text-align: center;
 }
 
 .tutorial-footer {

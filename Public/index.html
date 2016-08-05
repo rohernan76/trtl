@@ -68,20 +68,22 @@
 
 				<p class="tutorial-header">Come on down!!!</p> 
 
-				<p>Welcome to <span class="game-name">The Code is Right!</span> This game helps you to test your knowledge of programming concepts and languages. To play, choose game categories from the dropdown menu above and then choose a game level from the next menu. Then, all you have to do is drag and drop the code snippet or clue that appears on the screen into the correct bucket below. You earn points by matching the snippet to the correct category on the first try. Match all snippets correctly to complete the level.</p>
+				<p class="come-down">You're the next contestant on <span class="game-name">The Code is Right!</span> </p>
+
+				<p>This game helps you to test your knowledge of programming concepts and languages. To play, choose game categories from the dropdown menu above and then choose a game level from the next menu. Then, all you have to do is drag and drop the code snippet or clue that appears on the screen into the correct bucket below. You earn points by matching the snippet to the correct category on the first try. Match all snippets correctly to complete the level.</p>
 
 				<p class="tutorial-footer">Good luck!</p>
 			</div>
 		</div>
 
-		<div class="whitespace">
-			<div id="snippetBox" class="snippet"></div>
+		<div id="snippetContainer" class="whitespace test1">
+			<div id="drapSnip" class="test snippet" draggable="true" ondragstart="drag(event)"></div>
 		</div>
 
 		<div class="row">
-			<div id="bucket1" class="col-md-4 bucket">HTML</div>
-			<div id="bucket2" class="col-md-4 bucket">CSS</div>
-			<div id="bucket3" class="col-md-4 bucket">JS</div>
+			<div id="bucket1" class="col-md-4 bucket" ondrop="drop(event)" ondragover="allowDrop(event)">HTML</div>
+			<div id="bucket2" class="col-md-4 bucket" ondrop="drop(event)" ondragover="allowDrop(event)">CSS</div>
+			<div id="bucket3" class="col-md-4 bucket" ondrop="drop(event)" ondragover="allowDrop(event)">JS</div>
 		</div>
 </div>
 
