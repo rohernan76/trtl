@@ -17,15 +17,18 @@
 	<link href='https://fonts.googleapis.com/css?family=Henny+Penny' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
 
-
+	<link rel="stylesheet" type="text/css" href="browers.css">
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
+
+
 <body>
+
 <div class="header">
 	<div class="left">#</div>
 	<div class="right">The<br><span>Code</span><br>is<br>Right</div>
 
-	<button class="btn btn-default" type="submit">Tutorial</button>
+	<button id="tutorial-button" class="btn btn-default" type="submit">Tutorial</button>
 
 	<div class="dropdown d1">
   		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -50,35 +53,45 @@
 	    <li><a href="#">3</a></li>
 	  </ul>
 	</div>
+
+	<div class="score-box">Score: </div>
 </div>
 
 <div class="container">
 
 		<!-- Trigger/Open The Modal -->
-		<button id="myBtn">Open Modal</button>
+		<!-- <button id="myBtn">Open Modal</button> -->
 
 		<div id="tutorialModal" class="modal">
 			<div class="modal-content">
 				<span class="close">x</span>
 
 				<p class="tutorial-header">Come on down!!!</p> 
-				<p>Welcome to The Code is Right! This game helps you to test your knowledge of programming concepts and languages. To play, choose game categories from the dropdown menu above and then choose a game level from the next menu. Then, all you have to do is drag and drop the code snippet or clue that appears into the correct bucket below. Match all snippets correctly to complete the level. Good luck!
-				</p>
+
+				<p>Welcome to <span class="game-name">The Code is Right!</span> This game helps you to test your knowledge of programming concepts and languages. To play, choose game categories from the dropdown menu above and then choose a game level from the next menu. Then, all you have to do is drag and drop the code snippet or clue that appears on the screen into the correct bucket below. You earn points by matching the snippet to the correct category on the first try. Match all snippets correctly to complete the level.</p>
+
+				<p class="tutorial-footer">Good luck!</p>
 			</div>
 		</div>
-		<div class="row">
+
+		<div class="whitespace">
 			<div id="snippetBox" class="snippet"></div>
 		</div>
 
-
 		<div class="row">
-			<div id="html" class="col-md-4 bucket b1">HTML</div>
-			<div id="css" class="col-md-4 bucket b2">CSS</div>
-			<div id="js" class="col-md-4 bucket b3">JS</div>
+			<div id="1" class="col-md-4 bucket b1">HTML</div>
+			<div id="2" class="col-md-4 bucket b2">CSS</div>
+			<div id="3" class="col-md-4 bucket b3">JS</div>
 		</div>
 </div>
 
+<script type="text/javascript">
 
+            $("#tutorial-button").click(function(){
+               $(".tutorialModal").effect( "shake", {times:4}, 1000 );
+            });
+
+</script>
 
 <script src="index.js"></script>
 </body>
