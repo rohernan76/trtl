@@ -54,11 +54,15 @@
 	  </ul>
 	</div>
 
-	<div class="score-box">Score: </div>
+	<div id="score" class="score-box">Score: </div>
 </div>
 
-<div class="container">
+<div id="snippetContainer" class="whitespace test1">
+	<div id="dragSnip" class="snippet" draggable="true" ondragstart="drag(event)"></div>
+</div>
 
+
+<div class="container">
 		<!-- Trigger/Open The Modal -->
 		<!-- <button id="myBtn">Open Modal</button> -->
 
@@ -76,9 +80,9 @@
 			</div>
 		</div>
 
-		<div id="snippetContainer" class="whitespace test1">
+		<!-- <div id="snippetContainer" class="whitespace test1">
 			<div id="drapSnip" class="test snippet" draggable="true" ondragstart="drag(event)"></div>
-		</div>
+		</div> -->
 
 		<div class="row">
 			<div id="bucket1" class="col-md-4 bucket" ondrop="drop(event)" ondragover="allowDrop(event)">HTML</div>
@@ -87,13 +91,6 @@
 		</div>
 </div>
 
-<script type="text/javascript">
-
-            $("#tutorial-button").click(function(){
-               $(".tutorialModal").effect( "shake", {times:4}, 1000 );
-            });
-
-</script>
 
 <script src="index.js"></script>
 </body>
