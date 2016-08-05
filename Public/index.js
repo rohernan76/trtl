@@ -25,7 +25,7 @@ snippetArr[5] = new Snippet(6, "more js", "js", 3, "languages", 1);
 var modal = document.getElementById('tutorialModal');
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var btn = document.getElementById("tutorial-button");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -33,6 +33,10 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal 
 btn.onclick = function() {
     modal.style.display = "block";
+};
+
+window.onload = function() {
+	modal.style.display = "block";
 };
 
 // When the user clicks on <span> (x), close the modal
@@ -86,6 +90,8 @@ function showNewSnippet(snipNum) {
 	// code for dragging the element will do in here, 
 	$('#snippetBox').html(snippetArr[snipNum].text);
 }
+
+
 
 
 //	$('#snippetBox3').html("Id:" + snippetArr[2].id + "<br>Question Text: " + snippetArr[2].text + "<br>Answer: "+ snippetArr[2].answer + "<br>Category: " + snippetArr[2].category);
