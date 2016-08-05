@@ -15,6 +15,7 @@
     <!-- Google font -->
     <link href='https://fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Henny+Penny' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
 
 
     <link rel="stylesheet" type="text/css" href="main.css">
@@ -52,10 +53,21 @@
 </div>
 
 <div class="container">
+
+		<!-- Trigger/Open The Modal -->
+		<button id="myBtn">Open Modal</button>
+
+		<div id="tutorialModal" class="modal">
+			<div class="modal-content">
+				<span class="close">x</span>
+
+				<p class="tutorial-header">Come on down!!!</p> 
+				<p>Welcome to The Code is Right! This game helps you to test your knowledge of programming concepts and languages. To play, choose game categories from the dropdown menu above and then choose a game level from the next menu. Then, all you have to do is drag and drop the code snippet or clue that appears into the correct bucket below. Match all snippets correctly to complete the level. Good luck!
+				</p>
+			</div>
+		</div>
 		<div class="row">
-<!-- 			<div id="snippetBox1" class="col-md-4 snippet">Snippet 1</div> -->
-			<div id="snippetBox2" class="snippet">Snippet 2</div>
-<!-- 			<div id="snippetBox3" class="col-md-4 snippet">Snippet 3</div> -->
+			<div id="snippetBox" class="snippet"></div>
 		</div>
 
 
