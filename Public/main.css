@@ -108,16 +108,18 @@ span {
 
 .snippet {
   background-repeat: no-repeat;
-  margin: 60px 600px;
-  height: 50px;
+  background-position: center;
+  margin: 0 auto;
+  height: 125px;
+  width: 800px;
+  text-align: center;
 }
 
 .bucket {
   width: 320px;
-  height: 500px;
+  height: 350px;
   border-radius: 15px 15px 0 0;
-  border: 1px solid red;
-/*  background-image: url("images/bucket.png");*/
+  background-image: url("images/bucket.png");
   background-repeat: no-repeat;
   font-family: 'Slackey', cursive;
   font-size: 35px;
@@ -170,13 +172,14 @@ span {
 
 .game-name {
   font-family: 'Henny Penny', cursive;
-  font-size: 22px;
+  font-size: 26px;
   color: red;
   text-shadow: 1px 1px #FEFE00;
 }
 
 .come-down {
   text-align: center;
+  font-size: 25px;
 }
 
 .tutorial-footer {
