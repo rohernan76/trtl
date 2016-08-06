@@ -44,9 +44,9 @@
 		    	<span class="caret"></span>
 		  		</button>
 			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-			    <li><a href="#">HTML/CSS/JavaScript</a></li>
-			    <li><a href="#">Pokemon/Prescription Drug/Disease</a></li>
-			    <li><a href="#">Shakespeare/Chaucer/Dickens</a></li>
+			    <li onclick="showNewSnippet(0);">HTML/CSS/JavaScript</li>
+			    <li onclick="showNewSnippet(0);">Pokemon/Prescription Drug/Disease</li>
+			    <li onclick="showNewSnippet(0);">Shakespeare/Chaucer/Dickens</li>
 			  </ul>
 			</div>
 			<!-- level dropdown -->
@@ -56,9 +56,9 @@
 		    	<span class="caret"></span>
 		  		</button>
 			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-			    <li><a href="#">1</a></li>
-			    <li><a href="#">2</a></li>
-			    <li><a href="#">3</a></li>
+			    <li>1</li>
+			    <li>2</li>
+			    <li>3</li>
 			  </ul>
 			</div>
 			<!-- score box -->
@@ -92,6 +92,10 @@
 					You earn points by matching the snippet to the correct category on the first try. Match all snippets correctly to complete the level.</p>
 
 				<p class="tutorial-footer">Good luck!</p>
+
+				<audio autoplay>
+				  <source src="themesong.mp3" type="audio/mpeg">
+				</audio>
 			</div>
 		</div>
 
@@ -112,9 +116,7 @@
 		</div>
 </div>
 
-<audio autoplay>
-  <source src="themesong.mp3" type="audio/mpeg">
-</audio>
+
 
 <script src="index.js"></script>
 </body>

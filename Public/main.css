@@ -51,6 +51,10 @@
   padding: none;
 }
 
+.dropdown-menu li:hover {
+  cursor: pointer;
+}
+
 .score-box {
   width: 130px;
   height: 45px;
@@ -97,7 +101,6 @@ span {
   background-repeat: no-repeat;
   font-family: 'Slackey', cursive;
   font-size: 35px;
-  /*line-height: 225px;*/
   vertical-align: bottom;
   text-indent: 60px;
   color: red;

@@ -23,6 +23,7 @@ snippetArr[5] = new Snippet(6, "images/js-2.png", "js", 3, "languages", 1);
 // call function to randomly shuffle the array
 snippetArr = shuffle(snippetArr);
 
+
 //JS for Modal
 // Get the modal
 var modal = document.getElementById('tutorialModal');
@@ -42,9 +43,9 @@ btn.onclick = function() {
     modal.style.display = "block";
 };
 
-window.onload = function() {
-	modal.style.display = "block";
-};
+// window.onload = function() {
+// 	modal.style.display = "block";
+// };
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -98,10 +99,12 @@ function drop(ev) {
 }
 
 // start with the first snippet
-$(document).ready(function() {
-	//$('#snippetBox').html(snippetArr[0].text);
-	showNewSnippet(0);
-});
+// $(document).ready(function() {
+// 	//$('#snippetBox').html(snippetArr[0].text);
+// 	showNewSnippet(0);
+// });
+
+
 
 function showNewSnippet(snipNum) {
 	// code for dragging the element will do in here, 
