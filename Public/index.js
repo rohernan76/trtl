@@ -100,6 +100,7 @@ function View(c) {
 	// };
 
 	this.gameOverAlert= function(firstTryScore) {
+		changeCss(".snippet", "background-image:");
 		alert("Game is Over. You got " + firstTryScore + " right on the first try.");
 	};
 
