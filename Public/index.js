@@ -40,15 +40,18 @@ var firstTry = true;
 // When the user clicks on the button, open the modal 
 btn.onclick = function() {
     modal.style.display = "block";
+    document.getElementById("themeSong").play();
 };
 
 window.onload = function() {
 	modal.style.display = "block";
+	document.getElementById("themeSong").play();
 };
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
+    document.getElementById("themeSong").pause();
 };
 
 // When the user clicks anywhere outside of the modal, close it
@@ -73,11 +76,13 @@ function drop(ev) {
    ev.preventDefault();
    var data = ev.dataTransfer.getData("text");
    ev.target.appendChild(document.getElementById(data));
-   console.log(ev.target);
 
    var answerId = ev.target.id[6];
 	if (answerId == snippetArr[snipNum].answerId) {
 		// if it's the right answer, increment snipNum and then show new Snippet
+		document.getElementById("wrongAnswer").pause();
+		document.getElementById("wrongAnswer").currentTime = 0;
+		document.getElementById("correctAnswer").play();
 		snipNum++;
 		if (firstTry) {
 			firstTryScore++;
@@ -92,7 +97,9 @@ function drop(ev) {
 		}
 		firstTry = true;
 	} else {
+		// wrong answer selected
 		firstTry = false;
+		document.getElementById("wrongAnswer").play();
 		//document.getElementById("snippetContainer").appendChild(document.getElementById("dragSnip"));
 	}
 }
@@ -116,7 +123,6 @@ function showNewSnippet(snipNum) {
 function changeCss(className, classValue) {
     // we need invisible container to store additional css definitions
     var cssMainContainer = $('#css-modifier-container');
-    console.log("changeCss");
     if (cssMainContainer.length == 0) {
         cssMainContainer = $('<div id="css-modifier-container"></div>');
         cssMainContainer.hide();
