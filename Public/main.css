@@ -95,9 +95,8 @@ span {
 
 .bucket {
   width: 320px;
-  height: 250px;
+  height: 260px;
   border-radius: 15px 15px 0 0;
-  background-image: url("images/bucket.png");
   background-repeat: no-repeat;
   font-family: 'Slackey', cursive;
   font-size: 35px;
@@ -107,12 +106,24 @@ span {
   text-shadow: 3px 3px orange;
 }
 
-.bucket-text {
+#bucket1 {
+  background-image: url("images/bucket-1.png");
+}
+
+#bucket2 {
+  background-image: url("images/bucket-2.png");
+}
+
+#bucket3 {
+  background-image: url("images/bucket-3.png");
+}
+
+/*.bucket-text {
   margin: 75px 0 0 0;
 }
 .container {
 	width: 1000px;
-}
+}*/
 
 
 
