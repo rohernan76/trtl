@@ -1,6 +1,5 @@
-/*Begin custom CSS*/
 .header {
-  height: 215px;
+  height: 300px;
   margin-bottom: 40px;
 }
 
@@ -13,8 +12,7 @@
   color: yellow;
   text-align: center;
   padding-top: 10px;
-  margin: 40px 0 15px 200px ;
-  float: left;
+  margin: 40px 0 15px 0;
   font-family: 'Slackey', cursive;
 }
 
@@ -23,8 +21,7 @@
   width: 90px;
   background-color: red;
   border-radius: 0 30px 30px 0;
-  float: left;
-  margin: 25px 0  10px 0;
+  margin: 25px 5px  10px 0;
   font-size: 25px;
   padding: 15px;
   color: white;
@@ -33,10 +30,9 @@
 }
 
 .btn-default {
-  float: left;
   width: 140px;
   height: 45px;
-  margin: 130px 20px 50px 90px;
+  margin: 130px 5px 0px 5px;
   font-size: 22px;
   background-color: red;
   box-shadow: 3px 3px #FF8200;
@@ -45,41 +41,28 @@
   font-family: 'Henny Penny', cursive;
 }
 
-.d1 ul{
-  margin:175px 470px 0 725px;
+.categories #dropdownMenu1 {
+  padding: none;
 }
 
-.d2 ul{
-  margin:175px 250px 0 945px;
-}
-
-#dropdownMenu1 {
-  margin: 130px 20px 50px 20px;
-  width: 165px;
-  float: left;
-  position: relative;
-}
-
-#dropdownMenu2 {
-  margin: 130px 20px 50px 20px;
-  width: 165px;
-  float: left;
+#dropdownMenu1 #dropdownMenu2 {
+  margin: 130px 5px 0px 5px;
+  width: 160px;
+  padding: none;
 }
 
 .score-box {
-  float: left;
-  width: 140px;
+  width: 130px;
   height: 45px;
-  margin: 130px 25px 50px 20px;
-  font-size: 22px;
-  line-height: 45px;
+  margin: 130px 5px 50px 5px;
   background-color: #FEFE00;
+  border: none;
   border-radius: 3px;
   box-shadow: 3px 3px #FF8200;
-  padding-left: 15px;
-  border: none;
   color: red;
   font-family: 'Henny Penny', cursive;
+  font-size: 22px;
+  line-height: 45px;
 }
 
 span {
@@ -94,39 +77,36 @@ span {
 
 .row {
 	height: 150px;
-  width: 1000px;
+  width: 1200px;
   margin: 0; 
 }
-
-/*.snippet { 
-	width: 800px;
-  height: 100px;
-	margin: 0 auto;
-  text-align: center;
-  border: 1px dotted red;
-}*/
 
 .snippet {
   background-position: center;
   background-repeat: no-repeat;
   margin: 0 auto;
   height: 100px;
-  width: 600px;
+  width: 300px;
 }
 
 .bucket {
   width: 320px;
-  height: 350px;
+  height: 250px;
   border-radius: 15px 15px 0 0;
   background-image: url("images/bucket.png");
   background-repeat: no-repeat;
   font-family: 'Slackey', cursive;
   font-size: 35px;
-  line-height: 225px;
+  /*line-height: 225px;*/
+  vertical-align: bottom;
   text-indent: 60px;
-  color: black;
+  color: red;
+  text-shadow: 3px 3px orange;
 }
 
+.bucket-text {
+  margin: 75px 0 0 0;
+}
 .container {
 	width: 1000px;
 }

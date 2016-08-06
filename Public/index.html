@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Welcome to Trtl!</title>
+
+	<title>Welcome to Project trtl!</title>
 	<!-- JQuery CDN -->
     <script   src="https://code.jquery.com/jquery-3.1.0.js"   integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="   crossorigin="anonymous"></script>
 
@@ -11,50 +12,59 @@
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Normalize.css - from Bootstrap website, used for improved cross-browser rendering -->
+	<link rel="stylesheet" type="text/css" href="browsers.css">
+	<!-- Project trtl custom CSS -->
+    <link rel="stylesheet" type="text/css" href="main.css">
 
-    <!-- Google font -->
+    <!-- Google fonts -->
     <link href='https://fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Henny+Penny' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
 
-	<link rel="stylesheet" type="text/css" href="browsers.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 
 <body>
 
-<div class="header">
-	<div class="left">#</div>
-	<div class="right">The<br><span>Code</span><br>is<br>Right</div>
+<div class="container">
 
-	<button id="tutorial-button" class="btn btn-default" type="submit">Tutorial</button>
+		<div class="header row">
+				<!-- left side of logo -->
+				<div class="left col-md-2">#</div>
+				<!-- right side of logo -->
+				<div class="right col-md-2">The<br><span>Code</span><br>is<br>Right</div>
 
-	<div class="dropdown d1">
-  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    	Categories
-    	<span class="caret"></span>
-  		</button>
-	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-	    <li><a href="#">HTML/CSS/JavaScript</a></li>
-	    <li><a href="#">Pokemon/Prescription Drug/Disease</a></li>
-	    <li><a href="#">Shakespeare/Chaucer/Dickens</a></li>
-	  </ul>
-	</div>
+			<!-- tutorial button -->
+			<button id="tutorial-button" class="btn btn-default col-md-2" type="submit">Tutorial</button>
+			<!-- categories dropdown -->
+			<div id="categories" class="dropdown col-md-2">
+		  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    	Categories
+		    	<span class="caret"></span>
+		  		</button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    <li><a href="#">HTML/CSS/JavaScript</a></li>
+			    <li><a href="#">Pokemon/Prescription Drug/Disease</a></li>
+			    <li><a href="#">Shakespeare/Chaucer/Dickens</a></li>
+			  </ul>
+			</div>
+			<!-- level dropdown -->
+			<div class="dropdown col-md-2">
+		  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    	Level
+		    	<span class="caret"></span>
+		  		</button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    <li><a href="#">1</a></li>
+			    <li><a href="#">2</a></li>
+			    <li><a href="#">3</a></li>
+			  </ul>
+			</div>
+			<!-- score box -->
+			<div id="score" class="score-box col-md-2">Score: </div>
+		</div>
 
-	<div class="dropdown d2">
-  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    	Level
-    	<span class="caret"></span>
-  		</button>
-	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-	    <li><a href="#">1</a></li>
-	    <li><a href="#">2</a></li>
-	    <li><a href="#">3</a></li>
-	  </ul>
-	</div>
-
-	<div id="score" class="score-box">Score: </div>
 </div>
 
 <div id="snippetContainer" class="whitespace test1">
@@ -63,9 +73,7 @@
 
 
 <div class="container">
-		<!-- Trigger/Open The Modal -->
-		<!-- <button id="myBtn">Open Modal</button> -->
-
+		<!-- Tutorial Modal -->
 		<div id="tutorialModal" class="modal">
 			<div class="modal-content">
 				<span class="close">x</span>
@@ -92,9 +100,15 @@
 		</div> -->
 
 		<div class="row">
-			<div id="bucket1" class="col-md-4 bucket" ondrop="drop(event)" ondragover="allowDrop(event)">HTML</div>
-			<div id="bucket2" class="col-md-4 bucket" ondrop="drop(event)" ondragover="allowDrop(event)">CSS</div>
-			<div id="bucket3" class="col-md-4 bucket" ondrop="drop(event)" ondragover="allowDrop(event)">JS</div>
+			<div id="bucket1" class="col-md-4 bucket" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<div class="bucket-text">HTML</div>
+			</div>
+			<div id="bucket2" class="col-md-4 bucket" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<div class="bucket-text">CSS</div>
+			</div>
+			<div id="bucket3" class="col-md-4 bucket" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<div class="bucket-text">JS</div>
+			</div>
 		</div>
 </div>
 

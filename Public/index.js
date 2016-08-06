@@ -42,9 +42,9 @@ btn.onclick = function() {
     modal.style.display = "block";
 };
 
-// window.onload = function() {
-// 	modal.style.display = "block";
-// };
+window.onload = function() {
+	modal.style.display = "block";
+};
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -73,6 +73,7 @@ function drop(ev) {
    ev.preventDefault();
    var data = ev.dataTransfer.getData("text");
    ev.target.appendChild(document.getElementById(data));
+   console.log(ev.target);
 
    var answerId = ev.target.id[6];
 	if (answerId == snippetArr[snipNum].answerId) {
