@@ -1,4 +1,3 @@
-var snippetArr = [];
 
 // this is what our object will look like in Mongo. Creating it here for now so we can build the front end first.
 // jjf: 8/4/16
@@ -11,120 +10,156 @@ function Snippet (id, image, answer, answerId, category, difficulty) {
 	this.difficulty = difficulty;
 }
 
-// sample population of the objects so we can build out the front end
-// jjf: 8/4/16
-snippetArr[0] = new Snippet(1, "images/css-2.png", "css", 2, "languages", 1);
-snippetArr[1] = new Snippet(2, "images/html-4.png", "html", 1, "languages", 1);
-snippetArr[2] = new Snippet(3, "images/js-5.png", "js", 3, "languages", 1);
-snippetArr[3] = new Snippet(4, "images/css-3.png", "css", 2, "languages", 1);
-snippetArr[4] = new Snippet(5, "images/html-2.png", "html", 1, "languages", 1);
-snippetArr[5] = new Snippet(6, "images/js-2.png", "js", 3, "languages", 1);
+function Model () {
 
-// call function to randomly shuffle the array
-snippetArr = shuffle(snippetArr);
+	this.snippetArr = [];
 
+	// sample population of the objects so we can build out the front end
+	// jjf: 8/4/16
+	this.snippetArr[0] = new Snippet(1, "images/css-2.png", "css", 2, "languages", 1);
+	this.snippetArr[1] = new Snippet(2, "images/html-4.png", "html", 1, "languages", 1);
+	this.snippetArr[2] = new Snippet(3, "images/js-5.png", "js", 3, "languages", 1);
+	this.snippetArr[3] = new Snippet(4, "images/css-3.png", "css", 2, "languages", 1);
+	this.snippetArr[4] = new Snippet(5, "images/html-2.png", "html", 1, "languages", 1);
+	this.snippetArr[5] = new Snippet(6, "images/js-2.png", "js", 3, "languages", 1);
 
-//JS for Modal
-// Get the modal
-var modal = document.getElementById('tutorialModal');
+	//console.log("end of model", this.snippetArr);
 
-// Get the button that opens the modal
-var btn = document.getElementById("tutorial-button");
+} // end Model
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+function View(c) {
 
-var snipNum = 0;
-var firstTryScore = 0;
-var firstTry = true;
+	//JS for Modal
+	// Get the modal
+	var modal = document.getElementById('tutorialModal');
 
-// When the user clicks on the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-    document.getElementById("themeSong").play();
-};
+	// Get the button that opens the modal
+	var btn = document.getElementById("tutorial-button");
 
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
 
-window.onload = function() {
-	modal.style.display = "block";
-	document.getElementById("themeSong").play();
-};
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-    document.getElementById("themeSong").pause();
-};
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-        document.getElementById("themeSong").pause();
-    }
-};
+	// When the user clicks on the button, open the modal 
+	btn.onclick = function() {
+	    modal.style.display = "block";
+	    document.getElementById("themeSong").play();
+	};
 
 
-//******* Drag/Drop code here
+	window.onload = function() {
+		modal.style.display = "block";
+		document.getElementById("themeSong").play();
+	};
 
-function allowDrop(ev) {
-   ev.preventDefault();
-}
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	    modal.style.display = "none";
+	    document.getElementById("themeSong").pause();
+	};
 
-function drag(ev) {
-   ev.dataTransfer.setData("text", ev.target.id);
-}
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	    if (event.target == modal) {
+	        modal.style.display = "none";
+	        document.getElementById("themeSong").pause();
+	    }
+	};
 
-function drop(ev) {
-   ev.preventDefault();
-   var data = ev.dataTransfer.getData("text");
-   ev.target.appendChild(document.getElementById(data));
+	// this.showNewSnippet = function (imgStr) {
+	// 	// code for dragging the element will do in here, 
+	// 	var imgStr2 = "url(" + imgStr + ")";
+	// 	changeCss(".snippet", "background-image: " + imgStr2);
+	// };
 
-   var answerId = ev.target.id[6];
-	if (answerId == snippetArr[snipNum].answerId) {
-		// if it's the right answer, increment snipNum and then show new Snippet
-		document.getElementById("wrongAnswer").pause();
-		document.getElementById("wrongAnswer").currentTime = 0;
-		document.getElementById("correctAnswer").play();
-		snipNum++;
-		if (firstTry) {
-			firstTryScore++;
-			$("#score").html("Score: " + firstTryScore);
-		}
-		// check to see if there is another snippet to show
-		if (snippetArr[snipNum]) {
-			showNewSnippet(snipNum);
-			document.getElementById("snippetContainer").appendChild(document.getElementById("dragSnip"));
+
+	this.showNewSnippet = function (snipNum) {
+		var imgStr = "url(" + c.getImgStr(snipNum) + ")";
+		changeCss(".snippet", "background-image: " + imgStr);
+		document.getElementById("snippetContainer").appendChild(document.getElementById("dragSnip"));
+	};
+
+	//******* Drag/Drop code here
+	this.allowDrop = function(ev) {
+	   ev.preventDefault();
+	};
+
+	this.drag = function(ev) {
+	   ev.dataTransfer.setData("text", ev.target.id);
+	};
+
+	this.drop = function(ev) {
+	   ev.preventDefault();
+	   var data = ev.dataTransfer.getData("text");
+	   ev.target.appendChild(document.getElementById(data));
+	   c.checkAnswer(ev, this.showNewSnippet, this.gameOverAlert);
+	};
+
+	// put this code on the showNewSnippet function, no need to call it separately
+	// this.moveSnip = function() {
+	// 	document.getElementById("snippetContainer").appendChild(document.getElementById("dragSnip"));
+	// };
+
+	this.gameOverAlert= function(firstTryScore) {
+		alert("Game is Over. You got " + firstTryScore + " right on the first try.");
+	};
+
+} // end View
+
+
+function Controller(m) {
+
+	//console.log("in controller", m.snippetArr);
+	// call function to randomly shuffle the array
+	snippetArr = shuffle(m.snippetArr);
+
+	// set initial variables
+	var snipNum = 0;
+	var firstTryScore = 0;
+	var firstTry = true;
+
+	this.getImgStr = function(snipNum) {
+		return snippetArr[snipNum].image;
+	};
+
+	this.checkAnswer = function(ev, showSnipCallback, gameOverCallback) {
+		console.log(ev);
+		console.log(ev.target);
+		console.log("in check answer", ev.target.id[6], snippetArr[snipNum].answerId);
+		var answerId = ev.target.id[6];
+		if (answerId == snippetArr[snipNum].answerId) {
+			// if it's the right answer, increment snipNum and then show new Snippet
+			document.getElementById("wrongAnswer").pause();
+			document.getElementById("wrongAnswer").currentTime = 0;
+			document.getElementById("correctAnswer").play();
+			snipNum++;
+			if (firstTry) {
+				firstTryScore++;
+				$("#score").html("Score: " + firstTryScore);
+			}
+			// check to see if there is another snippet to show
+			if (snippetArr[snipNum]) {
+				showSnipCallback(snipNum);
+				// this no longer needed, because the code to do this is in showSnipCallback
+				// moveSnipCallback();
+			} else {
+				// the right answer bell above is being cut off, so call it all again here.
+				document.getElementById("wrongAnswer").pause();
+				document.getElementById("wrongAnswer").currentTime = 0;
+				document.getElementById("correctAnswer").play();
+				gameOverCallback(firstTryScore);
+			}
+			firstTry = true;
 		} else {
-			alert("Game is Over. You got " + firstTryScore + " right on the first try.");
+			// wrong answer selected
+			firstTry = false;
+			document.getElementById("wrongAnswer").play();
 		}
-		firstTry = true;
-	} else {
-		// wrong answer selected
-		firstTry = false;
-		document.getElementById("wrongAnswer").play();
-		//document.getElementById("snippetContainer").appendChild(document.getElementById("dragSnip"));
-	}
-}
+	};
+} // end Controller
 
-// start with the first snippet
-// $(document).ready(function() {
-// 	//$('#snippetBox').html(snippetArr[0].text);
-// 	showNewSnippet(0);
-// });
-
-
-
-function showNewSnippet(snipNum) {
-	// code for dragging the element will do in here, 
-	//$('#snippetBox').html(snippetArr[snipNum].text)
-	// $(".snippet").css("backgroundImage", "images/html-4.png");
-	var imgStr = "url(" + snippetArr[snipNum].image + ")";
-	changeCss(".snippet", "background-image: " + imgStr);
-}
-
+//Question for Erty: should these two functions stay global, or go inside the MVC in which they operate?
 //Copied from http://stackoverflow.com/questions/11474430/change-css-class-properties-with-jquery
-
+// this is used to change the background image property of the div that shows the code snippet
 function changeCss(className, classValue) {
     // we need invisible container to store additional css definitions
     var cssMainContainer = $('#css-modifier-container');
@@ -165,3 +200,7 @@ function shuffle(array) {
  return array;
 }
 
+
+var model = new Model();
+var controller = new Controller(model);
+var view = new View(controller);

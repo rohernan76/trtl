@@ -57,9 +57,9 @@
 		    	<span class="caret"></span>
 		  		</button>
 			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-			    <li onclick="showNewSnippet(0);">HTML/CSS/JavaScript</li>
-			    <li onclick="showNewSnippet(0);">Pokemon/Prescription Drug/Disease</li>
-			    <li onclick="showNewSnippet(0);">Shakespeare/Chaucer/Dickens</li>
+			    <li onclick="view.showNewSnippet(0);">HTML/CSS/JavaScript</li>
+			    <li onclick="view.showNewSnippet(0);">Pokemon/Prescription Drug/Disease</li>
+			    <li onclick="view.showNewSnippet(0);">Shakespeare/Chaucer/Dickens</li>
 			  </ul>
 			</div>
 			<!-- level dropdown -->
@@ -81,7 +81,7 @@
 </div>
 
 <div id="snippetContainer" class="whitespace test1">
-	<div id="dragSnip" class="snippet" draggable="true" ondragstart="drag(event)"></div>
+	<div id="dragSnip" class="snippet" draggable="true" ondragstart="view.drag(event)"></div>
 </div>
 
 
@@ -109,14 +109,14 @@
 		</div>
 
 		<div class="row">
-			<div id="bucket1" class="col-md-4 bucket" ondrop="drop(event)" ondragover="allowDrop(event)">
-				<div class="bucket-text">HTML</div>
+			<div id="bucket1" class="col-md-4 bucket" ondrop="view.drop(event)" ondragover="view.allowDrop(event)">
+				<!-- <div id="dropin1" class="bucket-text" ondrop="view.drop(event)" ondragover="view.allowDrop(event)">HTML</div> -->
 			</div>
-			<div id="bucket2" class="col-md-4 bucket" ondrop="drop(event)" ondragover="allowDrop(event)">
-				<div class="bucket-text">CSS</div>
+			<div id="bucket2" class="col-md-4 bucket" ondrop="view.drop(event)" ondragover="view.allowDrop(event)">
+				<!-- <div id="dropin2" class="bucket-text" ondrop="view.drop(event)" ondragover="view.allowDrop(event)">CSS</div> -->
 			</div>
-			<div id="bucket3" class="col-md-4 bucket" ondrop="drop(event)" ondragover="allowDrop(event)">
-				<div class="bucket-text">JS</div>
+			<div id="bucket3" class="col-md-4 bucket" ondrop="view.drop(event)" ondragover="view.allowDrop(event)">
+				<!-- <div id="dropin3" class="bucket-text" ondrop="view.drop(event)" ondragover="view.allowDrop(event)">JS</div> -->
 			</div>
 		</div>
 </div>
