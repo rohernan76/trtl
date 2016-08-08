@@ -47,15 +47,28 @@ function View(c) {
 
 
 	window.onload = function() {
-		modal.style.display = "block";
+		document.getElementById("tutorialModal").style.display = "block";
 		document.getElementById("themeSong").play();
 	};
 
 	// When the user clicks on <span> (x), close the modal
 	span.onclick = function() {
+		console.log("span click 2", modal.style.display);
 	    modal.style.display = "none";
 	    document.getElementById("themeSong").pause();
 	};
+
+	// Close the Game Over Modal
+	document.getElementById("stop").onclick = function() {
+		document.getElementById("themeSong").pause();
+		document.getElementById("gameOverModal").style.display = "none";
+	};
+
+	// $("span").click(function() {
+	//     this.modal.style.display = "none";
+	//     document.getElementById("themeSong").pause();
+	// }.bind(this));
+
 
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
@@ -101,7 +114,11 @@ function View(c) {
 
 	this.gameOverAlert= function(firstTryScore) {
 		changeCss(".snippet", "background-image:");
-		alert("Game is Over. You got " + firstTryScore + " right on the first try.");
+		document.getElementById("themeSong").play();
+		$("#final-score").html(firstTryScore);	
+		document.getElementById("gameOverModal").style.display = "block"; 
+		console.log("end of game over", document.getElementById("gameOverModal").style.display);
+		// alert("Game is Over. You got " + firstTryScore + " right on the first try.");
 	};
 
 	//Copied from http://stackoverflow.com/questions/11474430/change-css-class-properties-with-jquery

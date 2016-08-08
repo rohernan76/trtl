@@ -87,10 +87,11 @@
 
 
 <div class="container">
+
 		<!-- Tutorial Modal -->
 		<div id="tutorialModal" class="modal">
 			<div class="modal-content">
-				<span class="close">x</span>
+				<span id="start" class="close">x</span>
 
 				<p class="tutorial-header">Come on down!!!</p> 
 
@@ -106,38 +107,34 @@
 				<p class="tutorial-footer">Good luck!</p>
 
 			</div>
-
-<!-- 			<div id="gameOverModal" class="modal">
+		</div>
+		
+		<!-- Game Over Modal -->
+		<div id="gameOverModal" class="modal">
 			<div class="modal-content">
-				<span class="close">x</span>
+				<span id="stop" class="close">x</span>
 
-				<p class="gameOver-header">Great Job!!!</p> 
+				<p class="gameOver-header">Great Job!!!</p><br>
 
-				<p class="come-down">You're the next contestant on <span class="game-name">The Code is Right!</span> </p><br>
-				<p>This game helps you to test your knowledge of programming concepts and languages. To play:<br>
-				<ul>
-					<li>Choose game categories from the dropdown menu</li> 
-					<li>Choose a game level from the next menu</li>
-					<li>Drag and drop the code snippet or clue that appears on the screen into the correct bucket</li>
-				</ul>
+				<p id="score-message">You got <span id="final-score"></span>right on the first try!</p>
 
-					You earn points by matching the snippet to the correct category on the first try. Match all snippets correctly to complete the level.</p>
+				<p class="come-down">Choose another category and continue the fun!</p><br>
 
 				<p class="tutorial-footer">Good luck!</p>
 
-			</div> -->
+			</div>
 		</div>
 
 		<div class="row">
 			<div id="bucket1" class="col-md-4 bucket" ondrop="view.drop(event)" ondragover="view.allowDrop(event)">
-				<!-- <div id="dropin1" class="bucket-text" ondrop="view.drop(event)" ondragover="view.allowDrop(event)">HTML</div> -->
 			</div>
+
 			<div id="bucket2" class="col-md-4 bucket" ondrop="view.drop(event)" ondragover="view.allowDrop(event)">
-				<!-- <div id="dropin2" class="bucket-text" ondrop="view.drop(event)" ondragover="view.allowDrop(event)">CSS</div> -->
 			</div>
+
 			<div id="bucket3" class="col-md-4 bucket" ondrop="view.drop(event)" ondragover="view.allowDrop(event)">
-				<!-- <div id="dropin3" class="bucket-text" ondrop="view.drop(event)" ondragover="view.allowDrop(event)">JS</div> -->
 			</div>
+
 		</div>
 </div>
 
