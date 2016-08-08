@@ -58,6 +58,7 @@
 
 .dropdown-menu li:hover {
   cursor: pointer;
+  background-color: yellow;
 }
 
 .score-box {
@@ -95,7 +96,7 @@ span {
   background-repeat: no-repeat;
   margin: 0 auto;
   height: 100px;
-  width: 300px;
+  width: 350px;
 }
 
 .bucket {
@@ -158,6 +159,19 @@ span {
     font-size: 20px;
     font-family: 'Ubuntu Mono', serif;
     text-align: justify;
+}
+
+#score-message {
+    font-size: 26px;
+    font-family: 'Ubuntu Mono', serif;
+    text-align: center;
+}
+
+#final-score {
+  font-family: 'Henny Penny', cursive;
+  font-size: 30px;
+  color: red;
+  text-shadow: 2px 1px yellow: ;
 }
 
 .tutorial-header {
