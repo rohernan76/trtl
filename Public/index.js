@@ -133,6 +133,8 @@ function Controller(m) {
 			document.getElementById("wrongAnswer").currentTime = 0;
 			document.getElementById("correctAnswer").play();
 			snipNum++;
+			// this removes horizontal shake when new snippet appears
+			$(".animated").removeClass( "shake" );
 			if (firstTry) {
 				firstTryScore++;
 				$("#score").html("Score: " + firstTryScore);
@@ -154,6 +156,8 @@ function Controller(m) {
 			// wrong answer selected
 			firstTry = false;
 			document.getElementById("wrongAnswer").play();
+			// this adds a horizontal shake when user has selected wrong answer
+			$(".animated").addClass( "shake" );
 		}
 	};
 } // end Controller
