@@ -54,6 +54,11 @@ function View(c) {
 	    document.getElementById("themeSong").pause();
 	};
 
+	document.getElementById("stop").onclick = function() {
+		document.getElementById("gameOverModal").style.display = "none";
+		document.getElementById("themeSong").pause();
+	};
+
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
 	    if (event.target == modal) {
@@ -98,9 +103,12 @@ function View(c) {
 
 	this.gameOverAlert= function(firstTryScore) {
 		changeCss(".snippet", "background-image:");
-		alert("Game is Over. You got " + firstTryScore + " right on the first try.");
+		document.getElementById("themeSong").play();
+		$("#final-score").html(firstTryScore);	
+		document.getElementById("gameOverModal").style.display = "block"; 
+		console.log("end of game over", document.getElementById("gameOverModal").style.display);
+		// alert("Game is Over. You got " + firstTryScore + " right on the first try.");
 	};
-
 	//Copied from http://stackoverflow.com/questions/11474430/change-css-class-properties-with-jquery
 	// this is used to change the background image property of the div that shows the code snippet
 	function changeCss(className, classValue) {
