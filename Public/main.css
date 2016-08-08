@@ -117,15 +117,15 @@ span {
   text-shadow: 3px 3px orange;
 }
 
-#bucket1 {
+.bucket1 {
   background-image: url("images/bucket-plain.png");
 }
 
-#bucket2 {
+.bucket2 {
   background-image: url("images/bucket-plain.png");
 }
 
-#bucket3 {
+.bucket3 {
   background-image: url("images/bucket-plain.png");
 }
 

@@ -14,24 +14,39 @@ function Model () {
 
 	this.snippetArr = [];
 
-	this.loadData = function (categoryStr, callback) {
-		console.log("in m.loadData", categoryStr, callback);
+	this.loadData = function (categoryStr, showSnippetCallback) {
 		$.get("/getsnippet2", 
 			{
 	        category: categoryStr
 		    },
 		    function(data) {
-		        console.log(data);
-		        snippetArr = JSON.parse(data);
-		        callback(0);
+		        snippetArr = shuffle(JSON.parse(data));
+		        console.log("before shuffleCallback", snippetArr);
+		        showSnippetCallback(0);
 		    });
 	};
-	// $.get("/getsnippet", function(data, status) {
-	// 	snippetArr = JSON.parse(data);
-	// 	console.log(snippetArr);
-	// });
 
 	console.log("end of model", this.snippetArr);
+
+		// copied from: http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+	function shuffle(array) {
+		var currentIndex = array.length, temporaryValue, randomIndex;
+
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+
+	 return array;
+	} // end function shuffle
 
 } // end Model
 
@@ -85,14 +100,14 @@ function View(c) {
 	// 	changeCss(".snippet", "background-image: " + imgStr2);
 	// };
 	this.getSnippets = function (category) {
-		console.log("in view get snippets");
 		c.loadData(category, this.showNewSnippet);
-
+		changeCss(".bucket1", "background-image: url(images/" + category + "-1.png)");
+		changeCss(".bucket2", "background-image: url(images/" + category + "-2.png)");
+		changeCss(".bucket3", "background-image: url(images/" + category + "-3.png)");
 	};
 
 	this.showNewSnippet = function (snipNum) {
-		
-		console.log("in showNewSnippet", snipNum);
+		console.log("in show new snippet", snipNum);
 		var imgStr = "url(" + c.getImgStr(snipNum) + ")";
 		changeCss(".snippet", "background-image: " + imgStr);
 		document.getElementById("snippetContainer").appendChild(document.getElementById("dragSnip"));
@@ -124,7 +139,7 @@ function View(c) {
 		document.getElementById("themeSong").play();
 		$("#final-score").html(firstTryScore);	
 		document.getElementById("gameOverModal").style.display = "block"; 
-		console.log("end of game over", document.getElementById("gameOverModal").style.display);
+		// console.log("end of game over", document.getElementById("gameOverModal").style.display);
 		// alert("Game is Over. You got " + firstTryScore + " right on the first try.");
 	};
 	//Copied from http://stackoverflow.com/questions/11474430/change-css-class-properties-with-jquery
@@ -156,7 +171,8 @@ function Controller(m) {
 
 	// console.log("in controller", m.snippetArr);
 	// call function to randomly shuffle the array
-	snippetArr = shuffle(m.snippetArr);
+	//snippetArr = shuffle(m.snippetArr);
+	// var snippetArr = [];
 
 	// set initial variables
 	var snipNum = 0;
@@ -168,9 +184,15 @@ function Controller(m) {
 		return snippetArr[snipNum].image;
 	};
 
-	this.loadData = function (category, callback) {
-		console.log("in c.load data", category, callback);
-		m.loadData (category, callback);
+	// this.loadData = function (category, callback) {
+	// 	m.loadData (category, callback);
+	// 	// callback();
+	// };
+
+	this.loadData = function (category, showSnippetCallback) {
+		// reset snippetArr
+		// snippetArr = [];
+		m.loadData (category, showSnippetCallback);
 		// callback();
 	};
 
@@ -228,26 +250,6 @@ function Controller(m) {
 
 		}
 	};
-
-	// copied from: http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-	function shuffle(array) {
-		var currentIndex = array.length, temporaryValue, randomIndex;
-
-		// While there remain elements to shuffle...
-		while (0 !== currentIndex) {
-
-		// Pick a remaining element...
-		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex -= 1;
-
-		// And swap it with the current element.
-		temporaryValue = array[currentIndex];
-		array[currentIndex] = array[randomIndex];
-		array[randomIndex] = temporaryValue;
-	}
-
-	 return array;
-	} // end function shuffle
 
 } // end Controller
 
