@@ -173,6 +173,8 @@ function Controller(m) {
 			// also, play the correct answer sound. Stop the wrong answer sound, and reset it so the next time it plays, it starts from the beginning
 			document.getElementById("wrongAnswer").pause();
 			document.getElementById("wrongAnswer").currentTime = 0;
+			document.getElementById("correctAnswer").pause();
+			document.getElementById("correctAnswer").currentTime = 0;
 			document.getElementById("correctAnswer").play();
 			// increment snipNum so we move to the next snippet
 			snipNum++;
@@ -192,6 +194,8 @@ function Controller(m) {
 				// the right answer bell above is being cut off, so call it all again here.
 				document.getElementById("wrongAnswer").pause();
 				document.getElementById("wrongAnswer").currentTime = 0;
+				document.getElementById("correctAnswer").pause();
+				document.getElementById("correctAnswer").currentTime = 0;
 				document.getElementById("correctAnswer").play();
 				gameOverCallback(firstTryScore);
 			}
@@ -199,6 +203,10 @@ function Controller(m) {
 		} else {
 			// wrong answer selected
 			firstTry = false;
+			document.getElementById("wrongAnswer").pause();
+			document.getElementById("wrongAnswer").currentTime = 0;
+			document.getElementById("correctAnswer").pause();
+			document.getElementById("correctAnswer").currentTime = 0;
 			document.getElementById("wrongAnswer").play();
 			// this adds a horizontal shake when user has selected wrong answer
 			$(".animated").addClass( "shake" );
