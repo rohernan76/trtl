@@ -14,22 +14,19 @@ function Model () {
 
 	this.snippetArr = [];
 
-	// sample population of the objects so we can build out the front end
-	// jjf: 8/4/16
-	this.snippetArr[0] = new Snippet(1, "images/css-2.png", "css", 2, "languages", 1);
-	this.snippetArr[1] = new Snippet(2, "images/html-4.png", "html", 1, "languages", 1);
-	this.snippetArr[2] = new Snippet(3, "images/js-5.png", "js", 3, "languages", 1);
-	this.snippetArr[3] = new Snippet(4, "images/css-3.png", "css", 2, "languages", 1);
-	this.snippetArr[4] = new Snippet(5, "images/html-2.png", "html", 1, "languages", 1);
-	this.snippetArr[5] = new Snippet(6, "images/js-2.png", "js", 3, "languages", 1);
+	$.get("/getsnippet", function(data, status) {
+		snippetArr = JSON.parse(data);
+		console.log(snippetArr);
+	});
 
-	//console.log("end of model", this.snippetArr);
+	console.log("end of model", this.snippetArr);
 
 } // end Model
 
 function View(c) {
+	// console.log("in view");
 
-	//JS for Modal
+	// JS for Modal
 	// Get the modal
 	var modal = document.getElementById('tutorialModal');
 
@@ -131,7 +128,7 @@ function View(c) {
 
 function Controller(m) {
 
-	//console.log("in controller", m.snippetArr);
+	// console.log("in controller", m.snippetArr);
 	// call function to randomly shuffle the array
 	snippetArr = shuffle(m.snippetArr);
 
@@ -156,6 +153,8 @@ function Controller(m) {
 			// also, play the correct answer sound. Stop the wrong answer sound, and reset it so the next time it plays, it starts from the beginning
 			document.getElementById("wrongAnswer").pause();
 			document.getElementById("wrongAnswer").currentTime = 0;
+			document.getElementById("correctAnswer").pause();
+			document.getElementById("correctAnswer").currentTime = 0;
 			document.getElementById("correctAnswer").play();
 			$(".animated").addClass( "rotateIn");
 			// increment snipNum so we move to the next snippet
@@ -176,6 +175,8 @@ function Controller(m) {
 				// the right answer bell above is being cut off, so call it all again here.
 				document.getElementById("wrongAnswer").pause();
 				document.getElementById("wrongAnswer").currentTime = 0;
+				document.getElementById("correctAnswer").pause();
+				document.getElementById("correctAnswer").currentTime = 0;
 				document.getElementById("correctAnswer").play();
 				gameOverCallback(firstTryScore);
 			}
@@ -183,6 +184,10 @@ function Controller(m) {
 		} else {
 			// wrong answer selected
 			firstTry = false;
+			document.getElementById("wrongAnswer").pause();
+			document.getElementById("wrongAnswer").currentTime = 0;
+			document.getElementById("correctAnswer").pause();
+			document.getElementById("correctAnswer").currentTime = 0;
 			document.getElementById("wrongAnswer").play();
 			// this adds a horizontal shake when user has selected wrong answer
 			$(".animated").removeClass( "rotateIn");

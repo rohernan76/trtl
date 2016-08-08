@@ -44,25 +44,33 @@
 <div class="container">
 
 		<div class="header row">
-				<!-- left side of logo -->
-				<div class="left col-md-2">#</div>
-				<!-- right side of logo -->
-				<div class="right col-md-2">The<br><span>Code</span><br>is<br>Right</div>
+			<!-- left side of logo -->
+			<div class="left col-md-2">#</div>
+			<!-- right side of logo -->
+			<div class="right col-md-2">The<br><span>Code</span><br>is<br>Right</div>
 
-			<!-- tutorial button -->
-			<button id="tutorial-button" class="btn btn-default col-md-2" type="submit">Instructions</button>
+			<!-- this is an empty div to keep the buttons lower down a bit more to the left -->
+			<div id="empty1" class="empty col-md-2 pull-right"></div>
+
+			<!-- score box -->
+			<div id="score" class="score-box col-md-2 pull-right">Score: </div>
+
 			<!-- categories dropdown -->
-			<div id="categories" class="dropdown col-md-2">
+			<div id="categories" class="dropdown col-md-2 pull-right">
 		  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 		    	Categories
 		    	<span class="caret"></span>
 		  		</button>
 			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 			    <li onclick="view.showNewSnippet(0);">HTML/CSS/JavaScript</li>
-			    <li onclick="view.showNewSnippet(0);">Pokemon/Prescription Drug/Disease</li>
-			    <li onclick="view.showNewSnippet(0);">Shakespeare/Chaucer/Dickens</li>
+			    <li onclick="view.showNewSnippet(0);">Coming Soon: Pokemon/Prescription Drug/Disease</li>
+			    <li onclick="view.showNewSnippet(0);">Coming Soon: Shakespeare/Chaucer/Dickens</li>
 			  </ul>
-			</div>
+			</div> <!-- end categories dropdown -->
+
+			<!-- instructions button -->
+			<button id="tutorial-button" class="btn btn-default col-md-2 pull-right" type="submit">Instructions</button>
+
 			<!-- level dropdown -->
 			<!-- <div class="dropdown col-md-2">
 		  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -75,10 +83,7 @@
 			    <li>3</li>
 			  </ul>
 			</div> -->
-			<!-- score box -->
-			<div id="score" class="score-box col-md-2">Score: </div>
-		</div>
-
+		</div> <!-- end header row -->
 </div>
 
 <div id="snippetContainer" class="whitespace test1">
@@ -116,7 +121,7 @@
 
 				<p class="gameOver-header">Great Job!!!</p><br>
 
-				<p id="score-message">You got <span id="final-score"></span>right on the first try!</p>
+				<p id="score-message">You got <span id="final-score"><strong></strong></span> right on the first try!</p>
 
 				<p class="come-down">Choose another category and continue the fun!</p><br>
 
