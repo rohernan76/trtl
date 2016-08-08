@@ -104,6 +104,28 @@ function View(c) {
 		alert("Game is Over. You got " + firstTryScore + " right on the first try.");
 	};
 
+	//Copied from http://stackoverflow.com/questions/11474430/change-css-class-properties-with-jquery
+	// this is used to change the background image property of the div that shows the code snippet
+	function changeCss(className, classValue) {
+	    // we need invisible container to store additional css definitions
+	    var cssMainContainer = $('#css-modifier-container');
+	    if (cssMainContainer.length == 0) {
+	        cssMainContainer = $('<div id="css-modifier-container"></div>');
+	        cssMainContainer.hide();
+	        cssMainContainer.appendTo($('body'));
+	    }
+
+	    // and we need one div for each class
+	    classContainer = cssMainContainer.find('div[data-class="' + className + '"]');
+	    if (classContainer.length == 0) {
+	        classContainer = $('<div data-class="' + className + '"></div>');
+	        classContainer.appendTo(cssMainContainer);
+	    }
+
+	    // append additional style
+	    classContainer.html('<style>' + className + ' {' + classValue + '}</style>');
+	} // end function changeCss
+
 } // end View
 
 
@@ -123,25 +145,29 @@ function Controller(m) {
 	};
 
 	this.checkAnswer = function(ev, showSnipCallback, gameOverCallback) {
-		console.log(ev);
-		console.log(ev.target);
-		console.log("in check answer", ev.target.id[6], snippetArr[snipNum].answerId);
+		// console.log(ev);
+		// console.log(ev.target);
+		// console.log("in check answer", ev.target.id[6], snippetArr[snipNum].answerId);
+
+		// get the id of the drop target, to compare with the correct answer for this snippet
 		var answerId = ev.target.id[6];
 		if (answerId == snippetArr[snipNum].answerId) {
 			// if it's the right answer, increment snipNum and then show new Snippet
+			// also, play the correct answer sound. Stop the wrong answer sound, and reset it so the next time it plays, it starts from the beginning
 			document.getElementById("wrongAnswer").pause();
 			document.getElementById("wrongAnswer").currentTime = 0;
 			document.getElementById("correctAnswer").play();
+			// increment snipNum so we move to the next snippet
 			snipNum++;
+			// if this is the first bucket dropped into, increment the score
 			if (firstTry) {
 				firstTryScore++;
 				$("#score").html("Score: " + firstTryScore);
 			}
 			// check to see if there is another snippet to show
 			if (snippetArr[snipNum]) {
+				// if there is another snippet to show, 
 				showSnipCallback(snipNum);
-				// this no longer needed, because the code to do this is in showSnipCallback
-				// moveSnipCallback();
 			} else {
 				// the right answer bell above is being cut off, so call it all again here.
 				document.getElementById("wrongAnswer").pause();
@@ -156,50 +182,28 @@ function Controller(m) {
 			document.getElementById("wrongAnswer").play();
 		}
 	};
+
+	// copied from: http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+	function shuffle(array) {
+		var currentIndex = array.length, temporaryValue, randomIndex;
+
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+
+	 return array;
+	} // end function shuffle
+
 } // end Controller
-
-//Question for Erty: should these two functions stay global, or go inside the MVC in which they operate?
-//Copied from http://stackoverflow.com/questions/11474430/change-css-class-properties-with-jquery
-// this is used to change the background image property of the div that shows the code snippet
-function changeCss(className, classValue) {
-    // we need invisible container to store additional css definitions
-    var cssMainContainer = $('#css-modifier-container');
-    if (cssMainContainer.length == 0) {
-        cssMainContainer = $('<div id="css-modifier-container"></div>');
-        cssMainContainer.hide();
-        cssMainContainer.appendTo($('body'));
-    }
-
-    // and we need one div for each class
-    classContainer = cssMainContainer.find('div[data-class="' + className + '"]');
-    if (classContainer.length == 0) {
-        classContainer = $('<div data-class="' + className + '"></div>');
-        classContainer.appendTo(cssMainContainer);
-    }
-
-    // append additional style
-    classContainer.html('<style>' + className + ' {' + classValue + '}</style>');
-}
-
-// copied from: http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-function shuffle(array) {
- var currentIndex = array.length, temporaryValue, randomIndex;
-
- // While there remain elements to shuffle...
- while (0 !== currentIndex) {
-
-   // Pick a remaining element...
-   randomIndex = Math.floor(Math.random() * currentIndex);
-   currentIndex -= 1;
-
-   // And swap it with the current element.
-   temporaryValue = array[currentIndex];
-   array[currentIndex] = array[randomIndex];
-   array[randomIndex] = temporaryValue;
- }
-
- return array;
-}
 
 
 var model = new Model();
