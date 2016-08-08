@@ -1,5 +1,9 @@
+.container {
+  margin-left: 250px;
+/*  height: 275px;*/
+}
+
 .header {
-  height: 300px;
   margin-bottom: 40px;
 }
 
@@ -80,7 +84,8 @@ span {
 }
 
 .whitespace {
-  height: 150px;
+  height: 200px;
+  margin-top: 50px;
   width: 1000px;
   width: 100%;
 }
@@ -113,15 +118,15 @@ span {
 }
 
 #bucket1 {
-  background-image: url("images/bucket-1.png");
+  background-image: url("images/bucket-plain.png");
 }
 
 #bucket2 {
-  background-image: url("images/bucket-2.png");
+  background-image: url("images/bucket-plain.png");
 }
 
 #bucket3 {
-  background-image: url("images/bucket-3.png");
+  background-image: url("images/bucket-plain.png");
 }
 
 /*.bucket-text {

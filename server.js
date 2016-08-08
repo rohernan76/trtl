@@ -16,6 +16,14 @@ app.get('/getsnippet', function(req, res) {
 	});
 });
 
+app.get('/getsnippet2', function(req, res) {
+    console.log("getsnippet2");
+    console.log(req.query.category);
+    Snippet.find({category: req.query.category}, function(err, data){
+        res.send(JSON.stringify(data));
+    });
+});
+
 app.get('/', function (req, res) {
   res.send('Hello Trtls!');
 });
@@ -28,10 +36,6 @@ app.use(function(req, res, next) {
 	res.status(404);
 	res.send('404 file not found');
 });
-
-
-
-
 
 app.listen(8000, function () {
   console.log('Trtl listening on port 8000!');

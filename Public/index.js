@@ -14,10 +14,22 @@ function Model () {
 
 	this.snippetArr = [];
 
-	$.get("/getsnippet", function(data, status) {
-		snippetArr = JSON.parse(data);
-		console.log(snippetArr);
-	});
+	this.loadData = function (categoryStr, callback) {
+		console.log("in m.loadData", categoryStr, callback);
+		$.get("/getsnippet2", 
+			{
+	        category: categoryStr
+		    },
+		    function(data) {
+		        console.log(data);
+		        snippetArr = JSON.parse(data);
+		        callback(0);
+		    });
+	};
+	// $.get("/getsnippet", function(data, status) {
+	// 	snippetArr = JSON.parse(data);
+	// 	console.log(snippetArr);
+	// });
 
 	console.log("end of model", this.snippetArr);
 
@@ -72,9 +84,15 @@ function View(c) {
 	// 	var imgStr2 = "url(" + imgStr + ")";
 	// 	changeCss(".snippet", "background-image: " + imgStr2);
 	// };
+	this.getSnippets = function (category) {
+		console.log("in view get snippets");
+		c.loadData(category, this.showNewSnippet);
 
+	};
 
 	this.showNewSnippet = function (snipNum) {
+		
+		console.log("in showNewSnippet", snipNum);
 		var imgStr = "url(" + c.getImgStr(snipNum) + ")";
 		changeCss(".snippet", "background-image: " + imgStr);
 		document.getElementById("snippetContainer").appendChild(document.getElementById("dragSnip"));
@@ -146,7 +164,14 @@ function Controller(m) {
 	var firstTry = true;
 
 	this.getImgStr = function(snipNum) {
+		console.log("In getImgStr", snipNum);
 		return snippetArr[snipNum].image;
+	};
+
+	this.loadData = function (category, callback) {
+		console.log("in c.load data", category, callback);
+		m.loadData (category, callback);
+		// callback();
 	};
 
 	this.checkAnswer = function(ev, showSnipCallback, gameOverCallback) {
