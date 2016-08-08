@@ -32,13 +32,18 @@
 .btn-default {
   width: 140px;
   height: 45px;
-  margin: 130px 5px 0px 5px;
+  margin: 5px 5px;
+  margin: 130px 5px 5px 5px;
   font-size: 22px;
   background-color: red;
   box-shadow: 3px 3px #FF8200;
   border: none;
   color: white;
   font-family: 'Henny Penny', cursive;
+}
+
+#tutorial-button {
+  margin: 130px 20px 5px 5px;
 }
 
 .categories #dropdownMenu1 {
@@ -58,7 +63,7 @@
 .score-box {
   width: 130px;
   height: 45px;
-  margin: 130px 5px 50px 5px;
+  margin: 130px 80px 5px 0;
   background-color: #FEFE00;
   border: none;
   border-radius: 3px;
