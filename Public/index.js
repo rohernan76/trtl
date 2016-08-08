@@ -15,6 +15,7 @@ function Model () {
 	this.snippetArr = [];
 
 	this.loadData = function (categoryStr, showSnippetCallback) {
+		snippetArr = [];
 		$.get("/getsnippet2", 
 			{
 	        category: categoryStr
