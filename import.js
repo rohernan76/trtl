@@ -6,6 +6,16 @@ var SnippetSchema = require('./snippet.schema.js');
 var Snippet = mongoose.model('Snippet', SnippetSchema);
 
 
+snippet = new Snippet({
+	id: 1,
+	image: "images/css-2.png",
+	answer: "css",
+	answerId: 2,
+	category: "languages",
+	difficulty: 1
+});
+
+snippet.save();
 
 snippet = new Snippet({
 	id: 2,
