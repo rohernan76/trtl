@@ -47,28 +47,15 @@ function View(c) {
 
 
 	window.onload = function() {
-		document.getElementById("tutorialModal").style.display = "block";
+		modal.style.display = "block";
 		document.getElementById("themeSong").play();
 	};
 
 	// When the user clicks on <span> (x), close the modal
 	span.onclick = function() {
-		console.log("span click 2", modal.style.display);
 	    modal.style.display = "none";
 	    document.getElementById("themeSong").pause();
 	};
-
-	// Close the Game Over Modal
-	document.getElementById("stop").onclick = function() {
-		document.getElementById("themeSong").pause();
-		document.getElementById("gameOverModal").style.display = "none";
-	};
-
-	// $("span").click(function() {
-	//     this.modal.style.display = "none";
-	//     document.getElementById("themeSong").pause();
-	// }.bind(this));
-
 
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
@@ -114,11 +101,7 @@ function View(c) {
 
 	this.gameOverAlert= function(firstTryScore) {
 		changeCss(".snippet", "background-image:");
-		document.getElementById("themeSong").play();
-		$("#final-score").html(firstTryScore);	
-		document.getElementById("gameOverModal").style.display = "block"; 
-		console.log("end of game over", document.getElementById("gameOverModal").style.display);
-		// alert("Game is Over. You got " + firstTryScore + " right on the first try.");
+		alert("Game is Over. You got " + firstTryScore + " right on the first try.");
 	};
 
 	//Copied from http://stackoverflow.com/questions/11474430/change-css-class-properties-with-jquery
@@ -174,6 +157,7 @@ function Controller(m) {
 			document.getElementById("wrongAnswer").pause();
 			document.getElementById("wrongAnswer").currentTime = 0;
 			document.getElementById("correctAnswer").play();
+			$(".animated").addClass( "rotateIn");
 			// increment snipNum so we move to the next snippet
 			snipNum++;
 
@@ -201,7 +185,9 @@ function Controller(m) {
 			firstTry = false;
 			document.getElementById("wrongAnswer").play();
 			// this adds a horizontal shake when user has selected wrong answer
+			$(".animated").removeClass( "rotateIn");
 			$(".animated").addClass( "shake" );
+
 		}
 	};
 
