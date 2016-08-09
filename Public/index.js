@@ -14,15 +14,15 @@ function Model () {
 
 	this.snippetArr = [];
 
-	this.loadData = function (categoryStr, showSnippetCallback) {
-		snippetArr = [];
+	this.loadData = function (m, categoryStr, showSnippetCallback) {
+		var snippetArr = [];
 		$.get("/getsnippet2", 
 			{
 	        category: categoryStr
 		    },
 		    function(data) {
-		        snippetArr = shuffle(JSON.parse(data));
-		        console.log("before shuffleCallback", snippetArr);
+		        m.snippetArr = shuffle(JSON.parse(data));
+		        console.log("before Callback", m.snippetArr);
 		        showSnippetCallback(0);
 		    });
 	};
@@ -182,29 +182,26 @@ function Controller(m) {
 
 	this.getImgStr = function(snipNum) {
 		console.log("In getImgStr", snipNum);
-		return snippetArr[snipNum].image;
+		console.log("in getImgStr, here is m.snippetArr", m.snippetArr);
+		console.log("in getImgStr, here is c.snippetArr", m.snippetArr);
+		console.log(m.test);
+		return m.snippetArr[snipNum].image;
 	};
 
-	// this.loadData = function (category, callback) {
-	// 	m.loadData (category, callback);
-	// 	// callback();
-	// };
-
 	this.loadData = function (category, showSnippetCallback) {
-		// reset snippetArr
-		// snippetArr = [];
-		m.loadData (category, showSnippetCallback);
-		// callback();
+		snipNum = 0;
+		$("#score").html("Score: " + firstTryScore);
+		m.loadData (m, category, showSnippetCallback);
 	};
 
 	this.checkAnswer = function(ev, showSnipCallback, gameOverCallback) {
 		// console.log(ev);
 		// console.log(ev.target);
-		// console.log("in check answer", ev.target.id[6], snippetArr[snipNum].answerId);
+		console.log("in check answer", snipNum, ev.target.id[6], m.snippetArr[snipNum].answerId, m.snippetArr, m.snippetArr[snipNum]);
 
 		// get the id of the drop target, to compare with the correct answer for this snippet
 		var answerId = ev.target.id[6];
-		if (answerId == snippetArr[snipNum].answerId) {
+		if (answerId == m.snippetArr[snipNum].answerId) {
 			// if it's the right answer, increment snipNum and then show new Snippet
 			// also, play the correct answer sound. Stop the wrong answer sound, and reset it so the next time it plays, it starts from the beginning
 			document.getElementById("wrongAnswer").pause();
@@ -224,10 +221,11 @@ function Controller(m) {
 				$("#score").html("Score: " + firstTryScore);
 			}
 			// check to see if there is another snippet to show
-			if (snippetArr[snipNum]) {
-				// if there is another snippet to show, 
+			if (m.snippetArr[snipNum]) {
+				// if there is another snippet to show, show it
 				showSnipCallback(snipNum);
 			} else {
+				// the game is over.
 				// the right answer bell above is being cut off, so call it all again here.
 				document.getElementById("wrongAnswer").pause();
 				document.getElementById("wrongAnswer").currentTime = 0;
@@ -235,6 +233,7 @@ function Controller(m) {
 				document.getElementById("correctAnswer").currentTime = 0;
 				document.getElementById("correctAnswer").play();
 				gameOverCallback(firstTryScore);
+				firstTryScore = 0;
 			}
 			firstTry = true;
 		} else {

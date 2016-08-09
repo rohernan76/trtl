@@ -229,3 +229,7 @@ span {
     text-decoration: none;
     cursor: pointer;
 }
+
+li {
+  vertical-align: text-bottom;
+}
