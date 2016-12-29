@@ -37,6 +37,6 @@ app.use(function(req, res, next) {
 	res.send('404 file not found');
 });
 
-app.listen(8000, function () {
-  console.log('Trtl listening on port 8000!');
+app.listen(6000, function () {
+  console.log('Trtl listening on port 6000!');
 });

@@ -4,7 +4,8 @@
   "description": "teamred's hackathon project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,5 +13,14 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "mongoose": "^4.5.8"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohernan76/trtl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rohernan76/trtl/issues"
+  },
+  "homepage": "https://github.com/rohernan76/trtl#readme"
 }
